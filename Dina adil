@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dina, will you be my Valentine?</title>
+
+<style>
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#ffdde1;
+  font-family:Arial;
+  overflow:hidden;
+  position:relative;
+}
+
+.container {
+  text-align:center;
+}
+
+h1 {
+  font-size:2.5em;
+  color:#ff4d6d;
+}
+
+.buttons {
+  margin-top:20px;
+}
+
+button {
+  padding:15px 25px;
+  font-size:18px;
+  margin:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  position:relative;
+}
+
+#yes {
+  background-color:#28a745;
+  color:white;
+}
+
+#no {
+  background-color:#dc3545;
+  color:white;
+  position:absolute;
+}
+
+/* hearts animation */
+.heart {
+  position:absolute;
+  color:red;
+  font-size:2rem;
+  animation: floatUp 2s linear forwards;
+}
+
+@keyframes floatUp {
+  0% {opacity:1; transform:translateY(0) scale(1);}
+  100% {opacity:0; transform:translateY(-300px) scale(2);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Dina, will you be my Valentine? 💖</h1>
+  <div class="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+// No button katrheb
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.top = Math.random()*80 + "vh";
+  noBtn.style.left = Math.random()*80 + "vw";
+});
+
+// Yes button katban qaloub w message
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+  <div style="text-align:center; margin-top:50px;">
+    <h1 style="color:#ff4d6d; font-size:2em;">Kaybghiiiik Adil bzzaf ❤️<br>
+    Kaynmoot 3lik nti afdal wahda fhyati<br>
+    Azin dyali, al3mr dyali, amrati<br>
+    Saraha hamdulah nti fhyati<br>
+    Inchallah dima nb9aw mjmou3in 💖</h1>
+  </div>
+  `;
+
+  // create hearts
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.innerHTML = "❤️";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 2000);
+  }, 200);
+});
+</script>
+
+</body>
+</html>
